@@ -1,0 +1,5 @@
+@EndUserText.label: 'Incident Management Service'
+define service ZUI_INCT_473 {
+  expose ZC_DT_INCT_473    as Incidents;
+  expose ZC_DT_HISTORY_473 as History;
+}

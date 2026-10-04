@@ -1,0 +1,88 @@
+managed implementation in class zbp_i_dt_inct_473 unique;
+with draft;
+
+define behavior for ZI_DT_INCT_473 alias Incident
+persistent table zdt_inct_473
+draft table zdt_inct_d_473
+lock master
+total etag LastChangedAt
+etag master LocalLastChangedAt
+{
+  create;
+  update;
+  delete;
+
+  association _History { create; with draft; }
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  field ( numbering : managed, readonly )
+    IncUuid;
+
+  field ( readonly )
+    LocalCreatedBy,
+    LocalCreatedAt,
+    LocalLastChangedBy,
+    LocalLastChangedAt,
+    LastChangedAt;
+
+  mapping for zdt_inct_473
+  {
+    IncUuid             = inc_uuid;
+    IncidentId          = incident_id;
+    Title               = title;
+    Description         = description;
+    Status              = status;
+    Priority            = priority;
+    Responsible         = responsible;
+    CreationDate        = creation_date;
+    ChangedDate         = changed_date;
+    LocalCreatedBy      = local_created_by;
+    LocalCreatedAt      = local_created_at;
+    LocalLastChangedBy  = local_last_changed_by;
+    LocalLastChangedAt  = local_last_changed_at;
+    LastChangedAt       = last_changed_at;
+  }
+}
+
+
+define behavior for ZI_DT_HISTORY_473 alias History
+persistent table zdt_inct_h_473
+draft table zdt_inct_h_d_473
+lock dependent by _Incident
+{
+  update;
+  delete;
+
+  field ( numbering : managed, readonly )
+    HistoryCode;
+
+  field ( readonly )
+    IncUuid,
+    LocalCreatedBy,
+    LocalCreatedAt,
+    LocalLastChangedBy,
+    LocalLastChangedAt,
+    LastChangedAt;
+
+  association _Incident { with draft; }
+
+  mapping for zdt_inct_h_473
+  {
+    HistoryCode         = his_uuid;
+    IncUuid             = inc_uuid;
+    HistoryId           = his_id;
+    PreviousStatus      = previous_status;
+    NewStatus           = new_status;
+    TextDescription     = text;
+    LocalCreatedBy      = local_created_by;
+    LocalCreatedAt      = local_created_at;
+    LocalLastChangedBy  = local_last_changed_by;
+    LocalLastChangedAt  = local_last_changed_at;
+    LastChangedAt       = last_changed_at;
+  }
+}

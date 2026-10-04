@@ -1,0 +1,166 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: {
+  typeName: 'Incident',
+  typeNamePlural: 'Incidents',
+  title: {
+    type: #STANDARD,
+    value: 'IncidentId'
+  },
+  description: {
+    value: 'Title'
+  }
+}
+
+annotate entity ZC_DT_INCT_473 with
+{
+  @UI.facet: [
+    {
+      id: 'General',
+      purpose: #STANDARD,
+      type: #IDENTIFICATION_REFERENCE,
+      label: 'General Information',
+      position: 10
+    }
+  ]
+
+  @UI.lineItem: [
+    {
+      position: 10,
+      label: 'Incident ID'
+    }
+  ]
+  @UI.identification: [
+    {
+      position: 10,
+      label: 'Incident ID'
+    }
+  ]
+  IncidentId;
+
+
+  @UI.lineItem: [
+    {
+      position: 20,
+      label: 'Title'
+    }
+  ]
+  @UI.identification: [
+    {
+      position: 20,
+      label: 'Title'
+    }
+  ]
+  Title;
+
+
+  @UI.identification: [
+    {
+      position: 30,
+      label: 'Description'
+    }
+  ]
+  Description;
+
+
+  @UI.lineItem: [
+    {
+      position: 30,
+      label: 'Status'
+    }
+  ]
+  @UI.selectionField: [
+    {
+      position: 10
+    }
+  ]
+  @UI.identification: [
+    {
+      position: 40,
+      label: 'Status'
+    }
+  ]
+  Status;
+
+
+  @UI.lineItem: [
+    {
+      position: 40,
+      label: 'Priority'
+    }
+  ]
+  @UI.selectionField: [
+    {
+      position: 20
+    }
+  ]
+  @UI.identification: [
+    {
+      position: 50,
+      label: 'Priority'
+    }
+  ]
+  Priority;
+
+
+  @UI.identification: [
+    {
+      position: 60,
+      label: 'Responsible'
+    }
+  ]
+  responsible;
+
+
+  @UI.lineItem: [
+    {
+      position: 50,
+      label: 'Creation Date'
+    }
+  ]
+  @UI.selectionField: [
+    {
+      position: 30
+    }
+  ]
+  @UI.identification: [
+    {
+      position: 70,
+      label: 'Creation Date'
+    }
+  ]
+  CreationDate;
+
+
+  @UI.identification: [
+    {
+      position: 80,
+      label: 'Changed Date'
+    }
+  ]
+  ChangedDate;
+
+
+  @UI.hidden: true
+  IncUuid;
+
+
+  @UI.hidden: true
+  LocalCreatedBy;
+
+
+  @UI.hidden: true
+  LocalCreatedAt;
+
+
+  @UI.hidden: true
+  LocalLastChangedBy;
+
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+
+  @UI.hidden: true
+  LastChangedAt;
+}
